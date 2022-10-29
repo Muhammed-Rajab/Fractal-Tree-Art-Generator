@@ -4,7 +4,7 @@ let angle = 0;
 let len = 100;
 
 let branchReductionFactor = 0.69;
-let middleBranchReductionFactor = 0.43;
+let middleBranchReductionFactor = 0.45;
 
 let angleSlider;
 let angleLabel;
@@ -58,27 +58,31 @@ function draw() {
     // len = map(mouseX, 0, width / 2, 16, 200);
     stroke(255);
     translate(treePosXSlider.value(), height);
-    branch(len);
+    branch(len, branchReductionFactor);
 }
 
-function branch(len) {
+function branch(len, reductionFactor) {
+    len *= reductionFactor;
     strokeWeight(map(len, 4, 300, 0, 30));
+    if (len * reductionFactor ** 2 < 4) {
+        stroke("pink");
+    }
     line(0, 0, 0, -len);
     translate(0, -len);
     if (len > 4) {
         push();
         rotate(angle);
-        branch(len * branchReductionFactor);
+        branch(len, reductionFactor);
         pop();
 
         push();
         rotate(angle / 2);
-        branch(len * middleBranchReductionFactor);
+        branch(len, reductionFactor - 0.07);
         pop();
 
         push();
         rotate(-angle);
-        branch(len * branchReductionFactor);
+        branch(len, reductionFactor);
         pop();
     }
 }
