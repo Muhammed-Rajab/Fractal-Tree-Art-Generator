@@ -12,10 +12,14 @@ let angleLabel;
 let lenSlider;
 let lenLabel;
 
+let treePosXSlider;
+let treePosXLabel;
+
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 10);
     angleSlider = createSlider(0, PI, Math.PI / 6, 0.01);
     lenSlider = createSlider(4, 300, 150, 1);
+    treePosXSlider = createSlider(0, width, width / 2, 1);
 
     // Slider styling
     angleLabel = createDiv("Angle");
@@ -35,6 +39,15 @@ function setup() {
     lenLabel.style("top", "160px");
     lenLabel.style("left", "60px");
     lenSlider.parent(lenLabel);
+
+    treePosXLabel = createDiv("Tree position X");
+    treePosXLabel.style("position", "absolute");
+    treePosXLabel.style("color", "white");
+    treePosXLabel.style("display", "flex");
+    treePosXLabel.style("flex-direction", "column");
+    treePosXLabel.style("top", "200px");
+    treePosXLabel.style("left", "60px");
+    treePosXSlider.parent(treePosXLabel);
 }
 
 function draw() {
@@ -44,7 +57,7 @@ function draw() {
     // angle = map(mouseY, 0, height / 2, 0, TWO_PI);
     // len = map(mouseX, 0, width / 2, 16, 200);
     stroke(255);
-    translate(width / 2, height);
+    translate(treePosXSlider.value(), height);
     branch(len);
 }
 
