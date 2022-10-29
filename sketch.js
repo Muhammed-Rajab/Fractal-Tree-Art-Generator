@@ -102,8 +102,10 @@ function draw() {
 
 function branch(len) {
     strokeWeight(map(len, 4, 300, 0, 30));
-    if (len * branchReductionFactor ** leafDegreeSlider.value() < 4) {
-        stroke(leafColorPicker.color());
+    if (leafDegreeSlider.value() > 0) {
+        if (len * branchReductionFactor ** leafDegreeSlider.value() < 4) {
+            stroke(leafColorPicker.color());
+        }
     }
     line(0, 0, 0, -len);
     translate(0, -len);
