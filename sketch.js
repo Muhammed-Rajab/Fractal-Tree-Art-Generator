@@ -15,11 +15,19 @@ let lenLabel;
 let treePosXSlider;
 let treePosXLabel;
 
+let backgroundColorLabel;
+let backgroundColorPicker;
+
+let leafColorLabel;
+let leafColorPicker;
+
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 10);
     angleSlider = createSlider(0, PI, Math.PI / 6, 0.01);
     lenSlider = createSlider(4, 300, 200, 1);
     treePosXSlider = createSlider(0, width, width / 2, 1);
+    backgroundColorPicker = createColorPicker(51);
+    leafColorPicker = createColorPicker("red");
 
     // Slider styling
     angleLabel = createDiv("Angle");
@@ -48,10 +56,28 @@ function setup() {
     treePosXLabel.style("top", "200px");
     treePosXLabel.style("left", "60px");
     treePosXSlider.parent(treePosXLabel);
+
+    backgroundColorLabel = createDiv("Background Color");
+    backgroundColorLabel.style("position", "absolute");
+    backgroundColorLabel.style("color", "white");
+    backgroundColorLabel.style("display", "flex");
+    backgroundColorLabel.style("flex-direction", "column");
+    backgroundColorLabel.style("top", "240px");
+    backgroundColorLabel.style("left", "60px");
+    backgroundColorPicker.parent(backgroundColorLabel);
+
+    leafColorLabel = createDiv("Leaf Color");
+    leafColorLabel.style("position", "absolute");
+    leafColorLabel.style("color", "white");
+    leafColorLabel.style("display", "flex");
+    leafColorLabel.style("flex-direction", "column");
+    leafColorLabel.style("top", "290px");
+    leafColorLabel.style("left", "60px");
+    leafColorPicker.parent(leafColorLabel);
 }
 
 function draw() {
-    background(51);
+    background(backgroundColorPicker.color());
     angle = angleSlider.value();
     len = lenSlider.value();
     // angle = map(mouseY, 0, height / 2, 0, TWO_PI);
@@ -64,7 +90,7 @@ function draw() {
 function branch(len) {
     strokeWeight(map(len, 4, 300, 0, 30));
     if (len * branchReductionFactor ** 2 < 4) {
-        stroke("#9560bd");
+        stroke(leafColorPicker.color());
     }
     line(0, 0, 0, -len);
     translate(0, -len);
