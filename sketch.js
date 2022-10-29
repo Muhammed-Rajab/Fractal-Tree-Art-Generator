@@ -18,7 +18,7 @@ let treePosXLabel;
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 10);
     angleSlider = createSlider(0, PI, Math.PI / 6, 0.01);
-    lenSlider = createSlider(4, 300, 150, 1);
+    lenSlider = createSlider(4, 300, 200, 1);
     treePosXSlider = createSlider(0, width, width / 2, 1);
 
     // Slider styling
@@ -58,31 +58,30 @@ function draw() {
     // len = map(mouseX, 0, width / 2, 16, 200);
     stroke(255);
     translate(treePosXSlider.value(), height);
-    branch(len, branchReductionFactor);
+    branch(len);
 }
 
-function branch(len, reductionFactor) {
-    len *= reductionFactor;
+function branch(len) {
     strokeWeight(map(len, 4, 300, 0, 30));
-    if (len * reductionFactor ** 2 < 4) {
-        stroke("pink");
+    if (len * branchReductionFactor ** 2 < 4) {
+        stroke("#9560bd");
     }
     line(0, 0, 0, -len);
     translate(0, -len);
     if (len > 4) {
         push();
         rotate(angle);
-        branch(len, reductionFactor);
+        branch(len * branchReductionFactor);
         pop();
 
         push();
         rotate(angle / 2);
-        branch(len, reductionFactor - 0.07);
+        branch(len * middleBranchReductionFactor);
         pop();
 
         push();
         rotate(-angle);
-        branch(len, reductionFactor);
+        branch(len * branchReductionFactor);
         pop();
     }
 }
