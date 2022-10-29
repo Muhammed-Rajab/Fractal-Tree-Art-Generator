@@ -6,8 +6,8 @@ let angleSlider;
 let lenSlider;
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 10);
-    angleSlider = createSlider(0, PI, Math.PI / 3, 0.01);
-    lenSlider = createSlider(4, 200, 100, 1);
+    angleSlider = createSlider(0, PI, Math.PI / 6, 0.01);
+    lenSlider = createSlider(4, 300, 150, 1);
 
     // Slider styling
     angleSlider.style("position", "absolute");
@@ -31,6 +31,7 @@ function draw() {
 }
 
 function branch(len) {
+    strokeWeight(map(len, 4, 300, 0, 30));
     line(0, 0, 0, -len);
     translate(0, -len);
     if (len > 4) {
