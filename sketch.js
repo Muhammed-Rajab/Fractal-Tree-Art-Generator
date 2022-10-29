@@ -21,6 +21,9 @@ let backgroundColorPicker;
 let leafColorLabel;
 let leafColorPicker;
 
+let treeColorLabel;
+let treeColorPicker;
+
 let leafDegreeLabel;
 let leafDegreeSlider;
 
@@ -32,6 +35,7 @@ function setup() {
     leafDegreeSlider = createSlider(0, 10, 2, 1);
     backgroundColorPicker = createColorPicker(51);
     leafColorPicker = createColorPicker("red");
+    treeColorPicker = createColorPicker("white");
 
     // Slider styling
     angleLabel = createDiv("Angle");
@@ -84,9 +88,18 @@ function setup() {
     leafDegreeLabel.style("color", "white");
     leafDegreeLabel.style("display", "flex");
     leafDegreeLabel.style("flex-direction", "column");
-    leafDegreeLabel.style("top", "320");
+    leafDegreeLabel.style("top", "395px");
     leafDegreeLabel.style("left", "60px");
     leafDegreeSlider.parent(leafDegreeLabel);
+
+    treeColorLabel = createDiv("Tree Color");
+    treeColorLabel.style("position", "absolute");
+    treeColorLabel.style("color", "white");
+    treeColorLabel.style("display", "flex");
+    treeColorLabel.style("flex-direction", "column");
+    treeColorLabel.style("top", "340px");
+    treeColorLabel.style("left", "60px");
+    treeColorPicker.parent(treeColorLabel);
 }
 
 function draw() {
@@ -95,7 +108,7 @@ function draw() {
     len = lenSlider.value();
     // angle = map(mouseY, 0, height / 2, 0, TWO_PI);
     // len = map(mouseX, 0, width / 2, 16, 200);
-    stroke(255);
+    stroke(treeColorPicker.color());
     translate(treePosXSlider.value(), height);
     branch(len);
 }
