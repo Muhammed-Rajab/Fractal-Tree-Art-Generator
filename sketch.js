@@ -3,6 +3,9 @@
 let angle = 0;
 let len = 100;
 
+let branchReductionFactor = 0.69;
+let middleBranchReductionFactor = 0.43;
+
 let angleSlider;
 let angleLabel;
 
@@ -52,17 +55,17 @@ function branch(len) {
     if (len > 4) {
         push();
         rotate(angle);
-        branch(len * 0.67);
+        branch(len * branchReductionFactor);
         pop();
 
         push();
         rotate(angle / 2);
-        branch(len * 0.45);
+        branch(len * middleBranchReductionFactor);
         pop();
 
         push();
         rotate(-angle);
-        branch(len * 0.67);
+        branch(len * branchReductionFactor);
         pop();
     }
 }
