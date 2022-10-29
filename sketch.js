@@ -2,21 +2,36 @@
 
 let angle = 0;
 let len = 100;
+
 let angleSlider;
+let angleLabel;
+
 let lenSlider;
+let lenLabel;
+
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 10);
     angleSlider = createSlider(0, PI, Math.PI / 6, 0.01);
     lenSlider = createSlider(4, 300, 150, 1);
 
     // Slider styling
-    angleSlider.style("position", "absolute");
-    angleSlider.style("top", "120px");
-    angleSlider.style("left", "60px");
+    angleLabel = createDiv("Angle");
+    angleLabel.style("position", "absolute");
+    angleLabel.style("color", "white");
+    angleLabel.style("display", "flex");
+    angleLabel.style("flex-direction", "column");
+    angleLabel.style("top", "120px");
+    angleLabel.style("left", "60px");
+    angleSlider.parent(angleLabel);
 
-    lenSlider.style("position", "absolute");
-    lenSlider.style("top", "140px");
-    lenSlider.style("left", "60px");
+    lenLabel = createDiv("Length");
+    lenLabel.style("position", "absolute");
+    lenLabel.style("color", "white");
+    lenLabel.style("display", "flex");
+    lenLabel.style("flex-direction", "column");
+    lenLabel.style("top", "160px");
+    lenLabel.style("left", "60px");
+    lenSlider.parent(lenLabel);
 }
 
 function draw() {
