@@ -21,11 +21,15 @@ let backgroundColorPicker;
 let leafColorLabel;
 let leafColorPicker;
 
+let leafDegreeLabel;
+let leafDegreeSlider;
+
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 10);
     angleSlider = createSlider(0, PI, Math.PI / 6, 0.01);
     lenSlider = createSlider(4, 300, 200, 1);
     treePosXSlider = createSlider(0, width, width / 2, 1);
+    leafDegreeSlider = createSlider(0, 10, 2, 1);
     backgroundColorPicker = createColorPicker(51);
     leafColorPicker = createColorPicker("red");
 
@@ -74,6 +78,15 @@ function setup() {
     leafColorLabel.style("top", "290px");
     leafColorLabel.style("left", "60px");
     leafColorPicker.parent(leafColorLabel);
+
+    leafDegreeLabel = createDiv("Leaf Degree");
+    leafDegreeLabel.style("position", "absolute");
+    leafDegreeLabel.style("color", "white");
+    leafDegreeLabel.style("display", "flex");
+    leafDegreeLabel.style("flex-direction", "column");
+    leafDegreeLabel.style("top", "320");
+    leafDegreeLabel.style("left", "60px");
+    leafDegreeSlider.parent(leafDegreeLabel);
 }
 
 function draw() {
@@ -89,7 +102,7 @@ function draw() {
 
 function branch(len) {
     strokeWeight(map(len, 4, 300, 0, 30));
-    if (len * branchReductionFactor ** 2 < 4) {
+    if (len * branchReductionFactor ** leafDegreeSlider.value() < 4) {
         stroke(leafColorPicker.color());
     }
     line(0, 0, 0, -len);
