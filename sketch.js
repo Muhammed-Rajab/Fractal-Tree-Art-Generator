@@ -33,14 +33,13 @@ function setup() {
     lenSlider = createSlider(4, 300, 200, 1);
     treePosXSlider = createSlider(0, width, width / 2, 1);
     leafDegreeSlider = createSlider(0, 10, 2, 1);
-    backgroundColorPicker = createColorPicker(51);
-    leafColorPicker = createColorPicker("red");
-    treeColorPicker = createColorPicker("white");
+    backgroundColorPicker = createColorPicker("white");
+    leafColorPicker = createColorPicker("#7b7474");
+    treeColorPicker = createColorPicker("black");
 
     // Slider styling
     angleLabel = createDiv("Angle");
     angleLabel.style("position", "absolute");
-    angleLabel.style("color", "white");
     angleLabel.style("display", "flex");
     angleLabel.style("flex-direction", "column");
     angleLabel.style("top", "120px");
@@ -49,7 +48,6 @@ function setup() {
 
     lenLabel = createDiv("Length");
     lenLabel.style("position", "absolute");
-    lenLabel.style("color", "white");
     lenLabel.style("display", "flex");
     lenLabel.style("flex-direction", "column");
     lenLabel.style("top", "160px");
@@ -58,7 +56,6 @@ function setup() {
 
     treePosXLabel = createDiv("Tree position X");
     treePosXLabel.style("position", "absolute");
-    treePosXLabel.style("color", "white");
     treePosXLabel.style("display", "flex");
     treePosXLabel.style("flex-direction", "column");
     treePosXLabel.style("top", "200px");
@@ -67,7 +64,6 @@ function setup() {
 
     backgroundColorLabel = createDiv("Background Color");
     backgroundColorLabel.style("position", "absolute");
-    backgroundColorLabel.style("color", "white");
     backgroundColorLabel.style("display", "flex");
     backgroundColorLabel.style("flex-direction", "column");
     backgroundColorLabel.style("top", "240px");
@@ -76,7 +72,6 @@ function setup() {
 
     leafColorLabel = createDiv("Leaf Color");
     leafColorLabel.style("position", "absolute");
-    leafColorLabel.style("color", "white");
     leafColorLabel.style("display", "flex");
     leafColorLabel.style("flex-direction", "column");
     leafColorLabel.style("top", "290px");
@@ -85,7 +80,6 @@ function setup() {
 
     leafDegreeLabel = createDiv("Leaf Degree");
     leafDegreeLabel.style("position", "absolute");
-    leafDegreeLabel.style("color", "white");
     leafDegreeLabel.style("display", "flex");
     leafDegreeLabel.style("flex-direction", "column");
     leafDegreeLabel.style("top", "395px");
@@ -94,7 +88,6 @@ function setup() {
 
     treeColorLabel = createDiv("Tree Color");
     treeColorLabel.style("position", "absolute");
-    treeColorLabel.style("color", "white");
     treeColorLabel.style("display", "flex");
     treeColorLabel.style("flex-direction", "column");
     treeColorLabel.style("top", "340px");
