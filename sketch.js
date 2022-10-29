@@ -54,6 +54,12 @@ function branch(len) {
         rotate(angle);
         branch(len * 0.67);
         pop();
+
+        push();
+        rotate(angle / 2);
+        branch(len * 0.45);
+        pop();
+
         push();
         rotate(-angle);
         branch(len * 0.67);
