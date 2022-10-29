@@ -27,6 +27,9 @@ let treeColorPicker;
 let leafDegreeLabel;
 let leafDegreeSlider;
 
+let middleBranchLeftCheckList;
+let middleBranchRightCheckList;
+
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight - 10);
     angleSlider = createSlider(0, PI, Math.PI / 6, 0.01);
@@ -36,6 +39,8 @@ function setup() {
     backgroundColorPicker = createColorPicker("white");
     leafColorPicker = createColorPicker("#7b7474");
     treeColorPicker = createColorPicker("black");
+    middleBranchLeftCheckList = createCheckbox("Middle Left Branches", false);
+    middleBranchRightCheckList = createCheckbox("Middle Right Branches", true);
 
     // Slider styling
     angleLabel = createDiv("Angle");
@@ -93,6 +98,18 @@ function setup() {
     treeColorLabel.style("top", "340px");
     treeColorLabel.style("left", "60px");
     treeColorPicker.parent(treeColorLabel);
+
+    middleBranchLeftCheckList.style("position", "absolute");
+    middleBranchLeftCheckList.style("display", "flex");
+    middleBranchLeftCheckList.style("flex-direction", "column");
+    middleBranchLeftCheckList.style("top", "440px");
+    middleBranchLeftCheckList.style("left", "60px");
+
+    middleBranchRightCheckList.style("position", "absolute");
+    middleBranchRightCheckList.style("display", "flex");
+    middleBranchRightCheckList.style("flex-direction", "column");
+    middleBranchRightCheckList.style("top", "470px");
+    middleBranchRightCheckList.style("left", "60px");
 }
 
 function draw() {
@@ -121,11 +138,19 @@ function branch(len) {
         branch(len * branchReductionFactor);
         pop();
 
-        push();
-        rotate(angle / 2);
-        branch(len * middleBranchReductionFactor);
-        pop();
+        if (middleBranchRightCheckList.checked()) {
+            push();
+            rotate(angle / 2);
+            branch(len * middleBranchReductionFactor);
+            pop();
+        }
 
+        if (middleBranchLeftCheckList.checked()) {
+            push();
+            rotate(-angle / 2);
+            branch(len * middleBranchReductionFactor);
+            pop();
+        }
         push();
         rotate(-angle);
         branch(len * branchReductionFactor);
